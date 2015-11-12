@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+		<script src="https://ajax.cdnjs.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	</head>
+	<body>
+
+		<div id="trailer" >
+		</div>
+		
+		<script type="text/javascript"> 
+			$.ajax({
+				url : 'https://www.googleapis.com/youtube/v3/search?part=snippet&q=walkingdead+season4+episode5+trailer&key=AIzaSyDKTntFdJK_DH-cElBKy8nwOgjXOpoPvf0',
+				type : 'GET',
+    			jsonp: 'jsonp'
+			}).done(function(response){
+				console.log(response);
+				var iframe = '<iframe width="560" height="315" src="https://www.youtube.com/embed/'+response.items[0].id.videoId+'" frameborder="0" allowfullscreen></iframe>';
+				$("#trailer").append(iframe);
+			});
+		</script>
+	</body>
+</html>
